@@ -1,13 +1,52 @@
-body {
+@import-normalize;
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+}
+body {
+  overflow-x: hidden;
+}
+#root {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f3e5f5;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(101, 107, 136);
+  background-color: rgb(253, 210, 154);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(228, 153, 40);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(218, 143, 31);
+}
+
+/* Fonts */
+@font-face {
+  font-family: 'Raleway-semiBoldItalic';
+  src: url('./components/utility/fonts/Raleway-SemiBoldItalic.otf')
+    format('opentype');
 }
