@@ -1,11 +1,17 @@
 import './App.module.scss';
+import Navbar from './components/navbar/navbar';
+import Footer from './components/footer/footer';
+import ProductManagerApp from './components/productManagerApp/productManagerApp';
+import LanguageProvider from './contexts/languagesContext';
 
 function App() {
   return (
     <>
-      {/* <Navbar />
-      <ProductManagerApp />
-      <Footer /> */}
+      <LanguageProvider>
+        <Navbar />
+        <ProductManagerApp />
+        <Footer />
+      </LanguageProvider>
     </>
   );
 }
