@@ -5,11 +5,21 @@ const languageEquivalents = {
   Persian: {
     webAppTitleText: 'مدیریت انبار',
     ToggleBtnText: 'فا',
+    footerMe1: ' کدنویسی شده توسط ',
+    footerMe2: 'من',
+    footerInstructor1: 'الهام گرفته از دوره ی ریکت استاد',
+    footerInstructor2: 'صاحب محمدی',
+    footerInstructor3: '',
   },
 
   English: {
     webAppTitleText: 'Warehouse Management',
     ToggleBtnText: 'En',
+    footerMe1: ' coded by ',
+    footerMe2: 'me',
+    footerInstructor1: 'inspired by',
+    footerInstructor2: 'Saheb Mohammadi',
+    footerInstructor3: "'s React & Redux curse.",
   },
 };
 
