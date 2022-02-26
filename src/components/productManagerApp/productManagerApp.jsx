@@ -1,7 +1,17 @@
 import './productManagerApp.module.scss';
 
+import ProductList from '../productList/ProductList';
+import Filter from '../filter/Filter';
+import AddingProductForm from '../addingProductForm/AddingProductForm';
+
 const ProductManagerApp = () => {
-  return <></>;
+  return (
+    <>
+      <AddingProductForm />
+      <Filter />
+      <ProductList />
+    </>
+  );
 };
 
 export default ProductManagerApp;
