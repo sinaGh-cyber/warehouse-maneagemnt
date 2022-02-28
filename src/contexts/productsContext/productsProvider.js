@@ -7,19 +7,23 @@ const ProductsProvider = ({ children }) => {
   const initObj = {
     AllProducts: [],
     filteredProducts: [],
-    currentFilters: [],
+    categoryOptions: [{ value: false, label: 'custom category' }],
   };
 
   const [products, dispatch] = useReducer(reducer, initObj);
 
-  return <productsContext.Provider value={{products, dispatch}} >{children}</productsContext.Provider>;
+  return (
+    <productsContext.Provider value={{ products, dispatch }}>
+      {children}
+    </productsContext.Provider>
+  );
 };
 
 const useProducts = () => {
-    const Context = useContext(productsContext);
-    if (Context) return Context;
-    throw Error('language provider issue');
-  };
+  const Context = useContext(productsContext);
+  if (Context) return Context;
+  throw Error('language provider issue');
+};
 
 export default ProductsProvider;
-export {useProducts} ;
+export { useProducts };
