@@ -1,0 +1,170 @@
+@use '../utility/styles/colors.scss';
+
+.AddProductForm {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 130px;
+  .FormTag {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    border-radius: 10px;
+    background-color: colors.$purple-100;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Raleway-semiBoldItalic';
+      justify-content: space-between;
+
+      label {
+        margin-left: 0.2rem;
+        margin-bottom: 0.2rem;
+        color: colors.$deep-purple-800;
+      }
+      & > input,
+      .DateInputTag {
+        height: 30px;
+        border-radius: 5px;
+        border: solid colors.$purple-400 2px;
+        padding-left: 5px;
+        font-family: 'Raleway-semiBoldItalic';
+        &:focus {
+          outline: solid colors.$purple-400 3px;
+        }
+      }
+
+      .DateInputTag {
+        width: 95px;
+      }
+
+      .quantityInputTag {
+        width: 80px;
+      }
+
+      .submitBtn {
+        width: 50px;
+        height: 40px;
+        padding: 0;
+        background-color: colors.$purple-50;
+        border: solid colors.$purple-400 3px;
+        color: colors.$deep-purple-800;
+        font-size: xx-large;
+        font-weight: 900;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: scale(1.02);
+        }
+
+        &:active {
+          transform: scale(0.99);
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .categoryDiv {
+      width: 210px;
+      position: relative;
+
+      .selectCategory {
+        border: solid colors.$purple-400 2px;
+        border-radius: 5px;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    //   flex-direction: column;
+    .FormTag {
+      flex-direction: column;
+      width: 100%;
+      padding: 10px;
+      justify-content: space-around;
+      align-items: flex-start;
+
+      .categoryDiv,
+      .submitDiv,
+      .datePickerDiv,
+      .QuantityDiv,
+      .ProductNameDiv {
+        position: static;
+        width: 100%;
+        margin: 10px auto;
+        padding-bottom: 10px;
+      }
+
+      .calenderInput,
+      .categoryInputContainer {
+        margin: 0 auto;
+      }
+
+      .datePickerDiv,
+      .QuantityDiv,
+      .ProductNameDiv,
+      .categoryDiv,
+      .submitDiv {
+        //   flex-direction: row;
+        border-bottom: solid 2px colors.$purple-200;
+        width: 100%;
+
+        .quantityInputTag,
+        .productNameInputTag,
+        .submitBtn {
+          width: 60%;
+          height: 45px;
+          margin: 0 auto;
+        }
+        .DateInputTag {
+          width: 100%;
+          height: 45px;
+        }
+        .calenderInput,
+        .categoryInputContainer {
+          width: 60%;
+          height: 45px;
+        }
+
+        label {
+          width: 100%;
+        }
+      }
+
+      .submitDiv {
+        border: 0;
+        input {
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .FormTag {
+      .datePickerDiv,
+      .QuantityDiv,
+      .ProductNameDiv,
+      .categoryDiv,
+      .submitDiv {
+        .quantityInputTag,
+        .productNameInputTag,
+        .submitBtn {
+          width: 98%;
+          height: 45px;
+          margin: 0 auto;
+        }
+        .calenderInput,
+        .categoryInputContainer {
+          width: 98%;
+          height: 45px;
+        }
+      }
+    }
+  }
+}
