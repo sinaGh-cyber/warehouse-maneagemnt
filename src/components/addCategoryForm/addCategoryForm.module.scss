@@ -1,0 +1,49 @@
+@use '../utility/styles/colors.scss';
+
+.NewCategoryDiv {
+  position: absolute;
+  width: 100%;
+  top: 65px;
+  display: flex;
+  button {
+    background-color: colors.$purple-50;
+    width: 30px;
+    border: solid 2px colors.$purple-500;
+    border-radius: 5px;
+    margin-left: 2px;
+    color: colors.$purple-800;
+    font-size: large;
+    font-weight: 900;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+    }
+
+    &:active {
+      transform: scale(0.99);
+    }
+  }
+
+  input {
+    height: 30px;
+    width: 100%;
+    padding-left: 5px;
+    border-radius: 5px;
+    border: solid 2px colors.$purple-500;
+    font-family: 'Raleway-semiBoldItalic';
+    margin: 0;
+
+    &:focus {
+      outline: solid colors.$purple-400 2px;
+    }
+  }
+  @media (max-width: 800px) {
+    position: static;
+    margin: 10px auto;
+    width: 60%;
+  }
+  @media (max-width: 600px) {
+    width: 98%;
+  }
+}
