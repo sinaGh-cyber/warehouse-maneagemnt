@@ -3,25 +3,25 @@
 .NewCategoryDiv {
   position: absolute;
   width: 100%;
-  top: 65px;
+  top: 70px;
   display: flex;
   button {
     background-color: colors.$purple-50;
-    width: 30px;
+    width: 45px;
     border: solid 2px colors.$purple-500;
     border-radius: 5px;
-    margin-left: 2px;
+    margin-left: 4px;
     color: colors.$purple-800;
     font-size: large;
     font-weight: 900;
     transition: all 0.3s ease;
 
     &:hover {
-      transform: scale(1.02);
+      transform: scale(1.04);
     }
 
     &:active {
-      transform: scale(0.99);
+      transform: scale(0.98);
     }
   }
 
@@ -42,8 +42,23 @@
     position: static;
     margin: 10px auto;
     width: 60%;
+
+    input {
+      height: 40px;
+    }
   }
-  @media (max-width: 600px) {
+  @media (max-width: 580px) {
     width: 98%;
+  }
+}
+
+.NewCategoryDiv.PersianFlex {
+  input {
+    padding: 0;
+    padding-right: 8px;
+  }
+  button {
+    margin: 0;
+    margin-right: 4px;
   }
 }

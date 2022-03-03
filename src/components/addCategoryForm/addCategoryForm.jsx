@@ -1,31 +1,42 @@
 import { useRef, useState } from 'react';
 import { useProducts } from '../../contexts/productsContext/productsProvider';
 import styles from './addCategoryForm.module.scss';
+import WithLanguage from '../../hoc/withLanguage';
 
-const AddCategoryForm = ({ onAddCategoryBtnClickHandler }) => {
+const AddCategoryForm = ({
+  isPersian,
+  currentLanguageTexts,
+  onAddCategoryBtnClickHandler,
+}) => {
   const InputRef = useRef();
   const [inputCategory, setInputCategory] = useState();
   const { dispatch } = useProducts();
   return (
-    <div className={styles.NewCategoryDiv} >
+    <div
+      className={`${styles.NewCategoryDiv} ${
+        isPersian ? styles.PersianFlex : styles.EnglishFlex
+      }`}
+    >
       <input
-      className={styles.NewCategoryInputTag}
+        className={styles.NewCategoryInputTag}
         ref={InputRef}
         onChange={(e) => {
           setInputCategory(e.target.value);
         }}
         type="text"
-        placeholder="type your new category..."
+        placeholder={currentLanguageTexts.typeCategory}
       />
 
       <button
-      className={styles.addNewCategoryBtn}
+        className={styles.addNewCategoryBtn}
         onClick={() => {
-          dispatch({
-            type: 'addNewCategory',
-            data: { value: inputCategory, label: inputCategory },
-          });
-          onAddCategoryBtnClickHandler(inputCategory);
+          if (inputCategory) {
+            dispatch({
+              type: 'addNewCategory',
+              data: { value: inputCategory, label: inputCategory },
+            });
+            onAddCategoryBtnClickHandler(inputCategory);
+          }
         }}
       >
         +
@@ -34,4 +45,4 @@ const AddCategoryForm = ({ onAddCategoryBtnClickHandler }) => {
   );
 };
 
-export default AddCategoryForm;
+export default WithLanguage(AddCategoryForm);
