@@ -15,6 +15,7 @@ const languageEquivalents = {
     expireDate: 'تاریخ انفضا: ',
     category: 'دسته بندی: ',
     selectACategory: 'انتخاب دسته بندی...',
+    typeCategory: 'دسته بندی جدید را وارد کنید...',
   },
 
   English: {
@@ -30,6 +31,7 @@ const languageEquivalents = {
     expireDate: 'Expire date: ',
     category: 'Category: ',
     selectACategory: 'select a category...',
+    typeCategory: 'type your new category...',
   },
 };
 
