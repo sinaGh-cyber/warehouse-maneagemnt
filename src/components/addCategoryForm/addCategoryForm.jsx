@@ -36,10 +36,7 @@ const AddCategoryForm = ({
         placeholder={currentLanguageTexts.typeCategory}
       />
 
-      <button
-        className={styles.addNewCategoryBtn}
-        onClick={onChangeHandler}
-      >
+      <button className={styles.addNewCategoryBtn} onClick={onChangeHandler}>
         +
       </button>
     </div>
