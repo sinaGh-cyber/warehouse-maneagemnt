@@ -11,6 +11,15 @@ const AddCategoryForm = ({
   const InputRef = useRef();
   const [inputCategory, setInputCategory] = useState();
   const { dispatch } = useProducts();
+  const onChangeHandler = () => {
+    if (inputCategory) {
+      dispatch({
+        type: 'addNewCategory',
+        data: { value: inputCategory, label: inputCategory },
+      });
+      onAddCategoryBtnClickHandler(inputCategory);
+    }
+  };
   return (
     <div
       className={`${styles.NewCategoryDiv} ${
@@ -29,15 +38,7 @@ const AddCategoryForm = ({
 
       <button
         className={styles.addNewCategoryBtn}
-        onClick={() => {
-          if (inputCategory) {
-            dispatch({
-              type: 'addNewCategory',
-              data: { value: inputCategory, label: inputCategory },
-            });
-            onAddCategoryBtnClickHandler(inputCategory);
-          }
-        }}
+        onClick={onChangeHandler}
       >
         +
       </button>
