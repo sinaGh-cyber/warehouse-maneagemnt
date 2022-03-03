@@ -2,6 +2,7 @@
 
 .AddProductForm {
   display: flex;
+  margin-top: 10px;
   justify-content: center;
   width: 100%;
   min-height: 130px;
@@ -31,6 +32,7 @@
         border: solid colors.$purple-400 2px;
         padding-left: 5px;
         font-family: 'Raleway-semiBoldItalic';
+
         &:focus {
           outline: solid colors.$purple-400 3px;
         }
@@ -38,16 +40,19 @@
 
       .DateInputTag {
         width: 95px;
+        cursor: pointer;
       }
 
       .quantityInputTag {
         width: 80px;
+        cursor: pointer;
       }
 
       .submitBtn {
         width: 50px;
         height: 40px;
         padding: 0;
+        margin-top: 22px;
         background-color: colors.$purple-50;
         border: solid colors.$purple-400 3px;
         color: colors.$deep-purple-800;
@@ -76,6 +81,9 @@
       .selectCategory {
         border: solid colors.$purple-400 2px;
         border-radius: 5px;
+        * {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -145,7 +153,7 @@
     }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 580px) {
     .FormTag {
       .datePickerDiv,
       .QuantityDiv,
@@ -165,6 +173,33 @@
           height: 45px;
         }
       }
+    }
+  }
+}
+
+.AddProductForm.PersianFlex {
+  .FormTag {
+    flex-direction: row-reverse;
+
+    & > div {
+      direction: rtl;
+      font-size: large;
+
+      .DateInputTag,
+      & > input {
+        padding-right: 5px;
+      }
+
+      label {
+        direction: rtl;
+        margin-right: 0.2rem;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .FormTag {
+      flex-direction: column;
     }
   }
 }

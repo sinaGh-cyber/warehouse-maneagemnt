@@ -10,6 +10,11 @@ const languageEquivalents = {
     footerInstructor1: 'الهام گرفته از دوره ی ریکت استاد',
     footerInstructor2: 'صاحب محمدی',
     footerInstructor3: '',
+    ProductName: 'نام کالا:',
+    quantity: 'تعداد: ',
+    expireDate: 'تاریخ انفضا: ',
+    category: 'دسته بندی: ',
+    selectACategory: 'انتخاب دسته بندی...',
   },
 
   English: {
@@ -20,6 +25,11 @@ const languageEquivalents = {
     footerInstructor1: 'inspired by',
     footerInstructor2: 'Saheb Mohammadi',
     footerInstructor3: "'s React & Redux curse.",
+    ProductName: 'Product Name:',
+    quantity: 'quantity: ',
+    expireDate: 'Expire date: ',
+    category: 'Category: ',
+    selectACategory: 'select a category...',
   },
 };
 

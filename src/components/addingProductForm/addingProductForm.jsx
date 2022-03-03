@@ -6,6 +6,7 @@ import DatePicker from 'react-datepicker';
 import { useState, forwardRef } from 'react';
 import { useProducts } from '../../contexts/productsContext/productsProvider';
 import AddCategoryForm from '../addCategoryForm/addCategoryForm';
+import WithLanguage from '../../hoc/withLanguage';
 
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <input
@@ -19,7 +20,7 @@ const CustomInput = forwardRef(({ value, onClick }, ref) => (
   ></input>
 ));
 
-const AddingProductForm = () => {
+const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
   const { products, dispatch } = useProducts();
   const [formInfo, setFormInfo] = useState({
     date: new Date(),
@@ -60,10 +61,16 @@ const AddingProductForm = () => {
   };
 
   return (
-    <section className={styles.AddProductForm}>
+    <section
+      className={`${styles.AddProductForm} ${
+        isPersian ? styles.PersianFlex : styles.EnglishFlex
+      }`}
+    >
       <form onSubmit={onSubmitHandler} className={styles.FormTag}>
         <div className={styles.ProductNameDiv}>
-          <label htmlFor="productNameInputTag">Product Name: </label>
+          <label htmlFor="productNameInputTag">
+            {currentLanguageTexts.ProductName}{' '}
+          </label>
           <input
             onChange={onProductNameInputChangHandler}
             id="productNameInputTag"
@@ -73,7 +80,9 @@ const AddingProductForm = () => {
         </div>
 
         <div className={styles.QuantityDiv}>
-          <label htmlFor="quantityInputTag">quantity: </label>
+          <label htmlFor="quantityInputTag">
+            {currentLanguageTexts.quantity}
+          </label>
           <input
             type="number"
             min="1"
@@ -84,7 +93,7 @@ const AddingProductForm = () => {
           />
         </div>
         <div className={styles.datePickerDiv}>
-          <label htmlFor="datePicker">Expire date: </label>
+          <label htmlFor="datePicker">{currentLanguageTexts.expireDate}</label>
           <div className={styles.calenderInput}>
             <DatePicker
               selected={formInfo.date}
@@ -95,11 +104,13 @@ const AddingProductForm = () => {
         </div>
 
         <div className={styles.categoryDiv}>
-          <label htmlFor="CategoryInputId">Category: </label>
+          <label htmlFor="CategoryInputId">
+            {currentLanguageTexts.category}
+          </label>
           <div className={styles.categoryInputContainer}>
             <Select
               inputId="CategoryInputId"
-              placeholder="select a category..."
+              placeholder={currentLanguageTexts.selectACategory}
               Value={formInfo.category}
               onChange={onCategoryChangeHandler}
               options={products.categoryOptions}
@@ -122,4 +133,4 @@ const AddingProductForm = () => {
   );
 };
 
-export default AddingProductForm;
+export default WithLanguage(AddingProductForm);
