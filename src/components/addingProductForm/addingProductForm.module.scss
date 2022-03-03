@@ -185,6 +185,9 @@
       direction: rtl;
       font-size: large;
 
+      .submitBtn {
+        padding: 0;
+      }
       .DateInputTag,
       & > input {
         padding-right: 5px;
