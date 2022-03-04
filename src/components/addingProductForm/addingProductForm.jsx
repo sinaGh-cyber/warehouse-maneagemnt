@@ -25,8 +25,8 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
   const [formInfo, setFormInfo] = useState({
     date: new Date(),
     quantity: 1,
-    id: new Date().getTime(),
   });
+
   const onDatePickerChangeHandler = (date) => {
     setFormInfo({ ...formInfo, date: date });
   };
@@ -56,7 +56,11 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
       formInfo.productName &&
       formInfo.quantity
     ) {
-      dispatch({ type: 'addNewProduct', data: formInfo });
+      dispatch({
+        type: 'addNewProduct',
+        data: { ...formInfo, id: new Date().getTime() },
+      });
+      dispatch({ type: 'filter', filterType: products.currentFilter });
     }
   };
 
