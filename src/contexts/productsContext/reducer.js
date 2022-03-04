@@ -3,13 +3,11 @@ const reducer = (state, action) => {
     case 'addNewProduct': {
       const stateClone = { ...state };
       const isRepetitive = stateClone.AllProducts.reduce((prev, current) => {
-        console.log(prev, 'before');
         if (prev === true) return true;
 
         return current.productName === action.data.productName;
       }, false);
 
-      console.log(isRepetitive);
       if (isRepetitive) return state;
       stateClone.AllProducts.push(action.data);
       return stateClone;
@@ -30,6 +28,17 @@ const reducer = (state, action) => {
 
     case 'getDataFromLocalStorage': {
       return JSON.parse(localStorage.getItem('products'));
+    }
+
+    case 'filter': {
+      if (action.filterType === 'ALL') {
+        return { ...state, filteredProducts: state.AllProducts };
+      }
+      const filteredProducts = state.AllProducts.filter((product) => {
+        return product.currentFilter === action.filterType;
+      });
+
+      return { ...state, filteredProducts: filteredProducts };
     }
 
     default:
