@@ -1,4 +1,10 @@
-import { createContext, useReducer, useContext, useEffect } from 'react';
+import {
+  createContext,
+  useReducer,
+  useContext,
+  useEffect,
+  useRef,
+} from 'react';
 import reducer from './reducer';
 
 const productsContext = createContext(undefined);
@@ -8,10 +14,12 @@ const ProductsProvider = ({ children }) => {
     AllProducts: [],
     filteredProducts: [],
     categoryOptions: [{ value: false, label: 'custom category' }],
-    currentFilter: 'All',
+    currentFilter: 'ALL',
   };
 
   const [products, dispatch] = useReducer(reducer, initObj);
+
+  const isMounted = useRef(false);
 
   useEffect(() => {
     if (localStorage.getItem('products')) {
@@ -20,7 +28,11 @@ const ProductsProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(products));
+    if (isMounted.current) {
+      localStorage.setItem('products', JSON.stringify(products));
+    } else {
+      isMounted.current = true;
+    }
   }, [products]);
 
   return (
