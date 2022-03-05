@@ -1,3 +1,4 @@
+import { orderBy } from 'lodash';
 const reducer = (state, action) => {
   switch (action.type) {
     case 'addNewProduct': {
@@ -31,14 +32,28 @@ const reducer = (state, action) => {
     }
 
     case 'filter': {
-      if (action.filterType === 'ALL') {
-        return { ...state, filteredProducts: state.AllProducts };
+      let filteredProducts = state.AllProducts;
+      console.log(action.filterType !== 'ALL');
+      if (action.filterType !== 'ALL') {
+        console.log(filteredProducts, action.filterType);
+        filteredProducts = state.AllProducts.filter((product) => {
+          console.log(product.category === action.filterType);
+          return product.category === action.filterType;
+        });
       }
-      const filteredProducts = state.AllProducts.filter((product) => {
-        return product.currentFilter === action.filterType;
-      });
-
+      filteredProducts = orderBy(
+        filteredProducts,
+        [state.currentFilters.sortBy],
+        [state.currentFilters.sortOrder]
+      );
+      console.log(filteredProducts);
       return { ...state, filteredProducts: filteredProducts };
+    }
+
+    case 'setNewCategory': {
+      const stateClone = { ...state };
+      stateClone.currentFilters.category = action.value;
+      return stateClone;
     }
 
     default:
