@@ -13,8 +13,8 @@ const ProductsProvider = ({ children }) => {
   const initObj = {
     AllProducts: [],
     filteredProducts: [],
-    categoryOptions: [{ value: false, label: 'custom category' }],
-    currentFilter: 'ALL',
+    categoryOptions: [],
+    currentFilters: { category: 'ALL', sortBy: 'date', sortOrder: 'asc' },
   };
 
   const [products, dispatch] = useReducer(reducer, initObj);
