@@ -34,9 +34,9 @@ const reducer = (state, action) => {
     case 'filter': {
       let filteredProducts = state.AllProducts;
 
-      if (action.filterType !== 'ALL') {
+      if (state.currentFilters.category !== 'ALL') {
         filteredProducts = state.AllProducts.filter((product) => {
-          return product.category === action.filterType;
+          return product.category === state.currentFilters.category;
         });
       }
       filteredProducts = orderBy(
@@ -50,6 +50,18 @@ const reducer = (state, action) => {
     case 'setNewCategory': {
       const stateClone = { ...state };
       stateClone.currentFilters.category = action.value;
+      return stateClone;
+    }
+
+    case 'setNewSortOrder': {
+      const stateClone = { ...state };
+      stateClone.currentFilters.sortOrder = action.value;
+      return stateClone;
+    }
+
+    case 'setNewSortBy': {
+      const stateClone = { ...state };
+      stateClone.currentFilters.sortBy = action.value;
       return stateClone;
     }
 
