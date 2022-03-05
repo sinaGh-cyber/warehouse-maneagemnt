@@ -33,11 +33,9 @@ const reducer = (state, action) => {
 
     case 'filter': {
       let filteredProducts = state.AllProducts;
-      console.log(action.filterType !== 'ALL');
+
       if (action.filterType !== 'ALL') {
-        console.log(filteredProducts, action.filterType);
         filteredProducts = state.AllProducts.filter((product) => {
-          console.log(product.category === action.filterType);
           return product.category === action.filterType;
         });
       }
@@ -46,7 +44,6 @@ const reducer = (state, action) => {
         [state.currentFilters.sortBy],
         [state.currentFilters.sortOrder]
       );
-      console.log(filteredProducts);
       return { ...state, filteredProducts: filteredProducts };
     }
 

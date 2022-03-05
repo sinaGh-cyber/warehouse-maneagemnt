@@ -56,7 +56,6 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
       formInfo.productName &&
       formInfo.quantity
     ) {
-      console.log(formInfo.date);
       new Promise((resolve) => {
         resolve(true);
       })
