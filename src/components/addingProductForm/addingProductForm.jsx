@@ -11,10 +11,10 @@ import WithLanguage from '../../hoc/withLanguage';
 const CustomInput = forwardRef(({ value, onClick }, ref) => (
   <input
     readOnly
+    value={value}
     type="text"
     className={styles.DateInputTag}
     id="datePicker"
-    defaultValue={value}
     onClick={onClick}
     ref={ref}
   ></input>
@@ -56,11 +56,22 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
       formInfo.productName &&
       formInfo.quantity
     ) {
-      dispatch({
-        type: 'addNewProduct',
-        data: { ...formInfo, id: new Date().getTime() },
-      });
-      dispatch({ type: 'filter', filterType: products.currentFilter });
+      console.log(formInfo.date);
+      new Promise((resolve) => {
+        resolve(true);
+      })
+        .then(() => {
+          dispatch({
+            type: 'addNewProduct',
+            data: { ...formInfo, id: new Date().getTime() },
+          });
+        })
+        .then(() => {
+          dispatch({
+            type: 'filter',
+            filterType: products.currentFilters.category,
+          });
+        });
     }
   };
 
@@ -96,12 +107,15 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
             onChange={onQuantityInputChangeHandler}
           />
         </div>
+
         <div className={styles.datePickerDiv}>
           <label htmlFor="datePicker">{currentLanguageTexts.expireDate}</label>
           <div className={styles.calenderInput}>
             <DatePicker
+              value={formInfo.date}
               selected={formInfo.date}
               customInput={<CustomInput />}
+              dateFormat="dd/MM/yyyy"
               onChange={onDatePickerChangeHandler}
             />
           </div>
@@ -117,7 +131,10 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
               placeholder={currentLanguageTexts.selectACategory}
               Value={formInfo.category}
               onChange={onCategoryChangeHandler}
-              options={products.categoryOptions}
+              options={[
+                ...products.categoryOptions,
+                { value: false, label: 'custom category' },
+              ]}
               className={styles.selectCategory}
             />
           </div>
