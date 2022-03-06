@@ -1,0 +1,64 @@
+@use '../utility/styles/colors.scss';
+.filterManager {
+  width: 90%;
+  min-height: 70px;
+  border-bottom: solid 5px colors.$deep-purple-500;
+  background-color: colors.$deep-purple-200;
+  border-radius: 10px;
+  margin: 10px 0 5px 0;
+  display: flex;
+  font-size: large;
+  justify-content: center;
+
+  .InnerDivTag.selectCategoryDiv {
+    width: 32%;
+  }
+  .InnerDivTag {
+    width: 21%;
+    padding: 0.5rem;
+    margin: auto 1rem;
+    font-family: 'Raleway-semiBoldItalic';
+    label {
+      margin-left: 0.6rem;
+    }
+    .selectWarper {
+      padding: 5px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 5px;
+    .InnerDivTag.selectCategoryDiv {
+      width: 38%;
+    }
+    .InnerDivTag {
+      margin: 0 auto;
+      width: 24%;
+      padding: 0.2rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    .InnerDivTag.selectCategoryDiv {
+      width: 96%;
+    }
+
+    .InnerDivTag {
+      width: 96%;
+    }
+  }
+}
+
+.filterManager.PersianFlex {
+  direction: rtl;
+  font-weight: 500;
+  .InnerDivTag {
+    label {
+      margin: 0;
+      margin-right: 0.6rem;
+    }
+  }
+}

@@ -42,13 +42,18 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
   };
 
   return (
-    <div className={styles.filterManager}>
+    <div
+      className={`${styles.filterManager} ${
+        isPersian ? styles.PersianFlex : styles.EnglishFlex
+      }`}
+    >
+
       <div className={`${styles.selectOrderDiv} ${styles.InnerDivTag}`}>
         <label htmlFor="selectOrderInputId">
           {currentLanguageTexts.selectOrderText}{' '}
         </label>
         <div
-          className={`${styles.selectCategoryWarper} ${styles.selectWarper}`}
+          className={`${styles.selectOrderWarper} ${styles.selectWarper}`}
         >
           <Select
             placeholder={currentLanguageTexts.selectOrderTextPlaceholder}
@@ -58,7 +63,8 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
           />
         </div>
       </div>
-      <div className={`${styles.selectOrderByDiv} ${styles.InnerDivTag}`}>
+
+      <div className={`${styles.selectSortByDiv} ${styles.InnerDivTag}`}>
         <label htmlFor="selectSortByInputId">
           {currentLanguageTexts.selectSortByText}
         </label>
