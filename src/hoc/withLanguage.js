@@ -16,6 +16,21 @@ const languageEquivalents = {
     category: 'دسته بندی: ',
     selectACategory: 'انتخاب دسته بندی...',
     typeCategory: 'دسته بندی جدید را وارد کنید...',
+    OrderOptionArray: [
+      { label: 'صعودی', value: 'asc' },
+      { label: 'نزولی', value: 'desc' },
+    ],
+    selectOrderText: 'ترتیب: ',
+    selectOrderTextPlaceholder: 'ترتیب...',
+    selectSortByText: 'چینش بر اساس: ',
+    selectSortByTextPlaceholder: 'چینش بر اساس...',
+    selectCategoryText: 'دسته بندی: ',
+    sortByOptionArray: [
+      { label: 'نام کالا', value: 'productName' },
+      { label: 'تاریخ انقضا', value: 'date' },
+      { label: 'تعداد', value: 'quantity' },
+      { label: 'تاریخ ورود به لیست', value: 'id' },
+    ],
   },
 
   English: {
@@ -32,6 +47,21 @@ const languageEquivalents = {
     category: 'Category: ',
     selectACategory: 'select a category...',
     typeCategory: 'type your new category...',
+    selectOrderText: 'Order: ',
+    selectOrderTextPlaceholder: 'order...',
+    selectSortByText: 'Sort by: ',
+    selectSortByTextPlaceholder: 'Sort by... ',
+    selectCategoryText: 'Filter by category: ',
+    OrderOptionArray: [
+      { label: 'ascending', value: 'asc' },
+      { label: 'descending', value: 'desc' },
+    ],
+    sortByOptionArray: [
+      { label: 'Product name', value: 'productName' },
+      { label: 'Expire date', value: 'date' },
+      { label: 'Quantity', value: 'quantity' },
+      { label: 'Creation date', value: 'id' },
+    ],
   },
 };
 
