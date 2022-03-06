@@ -23,7 +23,7 @@ const languageEquivalents = {
     selectOrderText: 'ترتیب: ',
     selectOrderTextPlaceholder: 'ترتیب...',
     selectSortByText: 'چینش بر اساس: ',
-    selectSortByTextPlaceholder: 'چینش بر اساس...',
+    selectSortByTextPlaceholder: 'چینش...',
     selectCategoryText: 'دسته بندی: ',
     sortByOptionArray: [
       { label: 'نام کالا', value: 'productName' },
