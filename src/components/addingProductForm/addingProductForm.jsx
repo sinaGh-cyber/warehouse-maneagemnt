@@ -128,7 +128,7 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
             <Select
               inputId="CategoryInputId"
               placeholder={currentLanguageTexts.selectACategory}
-              Value={formInfo.category}
+              Value={{ value: formInfo.category, label: formInfo.category }}
               onChange={onCategoryChangeHandler}
               options={[
                 ...products.categoryOptions,

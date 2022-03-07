@@ -30,7 +30,7 @@
       }
       & > input,
       .DateInputTag {
-        height: 30px;
+        height: 42px;
         border-radius: 5px;
         border: solid colors.$purple-400 2px;
         padding-left: 5px;
@@ -76,7 +76,9 @@
         }
       }
     }
-
+    .ProductNameDiv {
+      width: 30%;
+    }
     .categoryDiv {
       width: 210px;
       position: relative;
@@ -109,6 +111,10 @@
         width: 100%;
         margin: 10px auto;
         padding-bottom: 10px;
+
+        label {
+          padding-left: 0.6rem;
+        }
       }
 
       .calenderInput,
@@ -206,6 +212,12 @@
   @media (max-width: 800px) {
     .FormTag {
       flex-direction: column;
+
+      & > div {
+        label {
+          padding-right: 0.6rem;
+        }
+      }
     }
   }
 }
