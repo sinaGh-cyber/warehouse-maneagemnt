@@ -65,6 +65,23 @@ const reducer = (state, action) => {
       return stateClone;
     }
 
+    case 'deleteProduct': {
+      const stateClone = { ...state };
+      stateClone.AllProducts = stateClone.AllProducts.filter((product) => {
+        return product.id !== action.data;
+      });
+      return stateClone;
+    }
+
+    case 'editProduct': {
+      const stateClone = { ...state };
+      const currentProductIdx = stateClone.AllProducts.findIndex(
+        (product) => product.id === action.data.id
+      );
+      stateClone.AllProducts[currentProductIdx] = action.data;
+      return stateClone;
+    }
+
     default:
       throw Error('wrong action type');
   }
