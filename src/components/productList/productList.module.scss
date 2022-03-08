@@ -1,0 +1,24 @@
+@use '../utility/styles/colors.scss';
+.productListSection {
+  display: flex;
+  flex: auto 1 1;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 10px auto;
+  border-radius: 10px;
+
+  .productItems {
+    background-color: colors.$deep-purple-300;
+    width: 90%;
+    display: flex;
+    flex: auto 1 1;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+
+    @media (max-width: 800px) {
+      width: 100%;
+    }
+  }
+}
