@@ -3,76 +3,23 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Select from 'react-select';
 
 import DatePicker from 'react-datepicker';
-import { useState, forwardRef } from 'react';
-import { useProducts } from '../../contexts/productsContext/productsProvider';
+
+import useForm from '../../customHooks/useForm/useForm';
 import AddCategoryForm from '../addCategoryForm/addCategoryForm';
 import WithLanguage from '../../hoc/withLanguage';
 
-const CustomInput = forwardRef(({ value, onClick }, ref) => (
-  <input
-    readOnly
-    value={value}
-    type="text"
-    className={styles.DateInputTag}
-    id="datePicker"
-    onClick={onClick}
-    ref={ref}
-  ></input>
-));
-
 const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
-  const { products, dispatch } = useProducts();
-  const [formInfo, setFormInfo] = useState({
-    date: new Date(),
-    quantity: 1,
-  });
-
-  const onDatePickerChangeHandler = (date) => {
-    setFormInfo({ ...formInfo, date: date });
-  };
-
-  const onAddCategoryBtnClickHandler = (categoryVal) => {
-    setFormInfo({ ...formInfo, category: categoryVal });
-  };
-
-  const onQuantityInputChangeHandler = (e) => {
-    setFormInfo({ ...formInfo, quantity: +e.target.value });
-  };
-
-  const onProductNameInputChangHandler = (e) => {
-    setFormInfo({ ...formInfo, productName: e.target.value });
-  };
-
-  const onCategoryChangeHandler = (e) => {
-    setFormInfo({ ...formInfo, category: e.value });
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-
-    if (
-      formInfo.date &&
-      formInfo.category &&
-      formInfo.productName &&
-      formInfo.quantity
-    ) {
-      new Promise((resolve) => {
-        resolve(true);
-      })
-        .then(() => {
-          dispatch({
-            type: 'addNewProduct',
-            data: { ...formInfo, id: new Date().getTime() },
-          });
-        })
-        .then(() => {
-          dispatch({
-            type: 'filter',
-            filterType: products.currentFilters.category,
-          });
-        });
-    }
-  };
+  const {
+    products,
+    formInfo,
+    CustomInput,
+    onDatePickerChangeHandler,
+    onAddCategoryBtnClickHandler,
+    onQuantityInputChangeHandler,
+    onProductNameInputChangHandler,
+    onCategoryChangeHandler,
+    onSubmitHandler,
+  } = useForm(isPersian);
 
   return (
     <section
