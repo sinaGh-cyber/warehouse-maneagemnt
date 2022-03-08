@@ -2,8 +2,15 @@ import styles from './Filter.module.scss';
 import { useProducts } from '../../contexts/productsContext/productsProvider';
 import Select from 'react-select';
 import WithLanguage from '../../hoc/withLanguage';
+import { useState } from 'react';
+
 const Filter = ({ isPersian, currentLanguageTexts }) => {
   const { products, dispatch } = useProducts();
+
+  const [myFilter, setMyFilter] = useState({
+    sortBy: false,
+    order: false,
+  });
 
   const onSelectCategoryChangHandler = (e) => {
     new Promise((resolve) => {
@@ -26,6 +33,9 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
       })
       .then(() => {
         dispatch({ type: 'filter' });
+      })
+      .finally(() => {
+        setMyFilter({ ...myFilter, order: e });
       });
   };
 
@@ -38,6 +48,9 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
       })
       .then(() => {
         dispatch({ type: 'filter' });
+      })
+      .finally(() => {
+        setMyFilter({ ...myFilter, sortBy: e });
       });
   };
 
@@ -47,15 +60,13 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
         isPersian ? styles.PersianFlex : styles.EnglishFlex
       }`}
     >
-
       <div className={`${styles.selectOrderDiv} ${styles.InnerDivTag}`}>
         <label htmlFor="selectOrderInputId">
           {currentLanguageTexts.selectOrderText}{' '}
         </label>
-        <div
-          className={`${styles.selectOrderWarper} ${styles.selectWarper}`}
-        >
+        <div className={`${styles.selectOrderWarper} ${styles.selectWarper}`}>
           <Select
+            value={myFilter.order}
             placeholder={currentLanguageTexts.selectOrderTextPlaceholder}
             inputId="selectOrderInputId"
             options={currentLanguageTexts.OrderOptionArray}
@@ -70,6 +81,7 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
         </label>
         <div className={`${styles.selectSortByWarper} ${styles.selectWarper}`}>
           <Select
+            value={myFilter.sortBy}
             placeholder={currentLanguageTexts.selectSortByTextPlaceholder}
             inputId="selectSortByInputId"
             options={currentLanguageTexts.sortByOptionArray}
@@ -86,6 +98,10 @@ const Filter = ({ isPersian, currentLanguageTexts }) => {
           className={`${styles.selectCategoryWarper} ${styles.selectWarper}`}
         >
           <Select
+            value={{
+              value: products.currentFilters.category,
+              label: products.currentFilters.category,
+            }}
             placeholder={currentLanguageTexts.selectACategory}
             inputId="selectCategoryInputId"
             options={[
