@@ -1,0 +1,22 @@
+@use '../../components/utility/styles/colors.scss';
+.DateInputTag {
+  height: 42px;
+  border-radius: 5px;
+  border: solid colors.$purple-400 2px;
+  padding-left: 5px;
+  font-family: 'Raleway-semiBoldItalic';
+  width: 95px;
+  cursor: pointer;
+
+  &:focus {
+    outline: solid colors.$purple-400 3px;
+  }
+
+  @media (max-width: 800px) {
+    width: 100%;
+    height: 45px;
+  }
+}
+.DateInputTag.Persian {
+  padding-right: 5px;
+}
