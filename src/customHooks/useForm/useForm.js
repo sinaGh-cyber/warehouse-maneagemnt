@@ -19,7 +19,7 @@ const useForm = (isPersian, product) => {
   const [formInfo, setFormInfo] = useState(
     product ? initProduct : initAddingForm
   );
-  const [isReadOnly, setIsReadOnly] = useState(false);
+  const [isReadOnly, setIsReadOnly] = useState(true);
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
     <input
@@ -79,6 +79,62 @@ const useForm = (isPersian, product) => {
     }
   };
 
+  const onEditBtnClickHandler = () => {
+    setIsReadOnly(false);
+  };
+
+  const onUndoBtnClickHandler = () => {
+    const currentProductIdx = products.AllProducts.findIndex(
+      (item) => item.id === product.id
+    );
+    const currentProduct = products.AllProducts[currentProductIdx];
+    setFormInfo({
+      productName: currentProduct?.productName,
+      date: new Date(currentProduct?.date),
+      id: currentProduct?.id,
+      quantity: currentProduct?.quantity,
+      category: currentProduct?.category,
+    });
+    setIsReadOnly(true);
+  };
+
+  const onDeleteBtnClickHandler = (e) => {
+    new Promise((resolve) => {
+      resolve(true);
+    })
+      .then(() => {
+        dispatch({
+          type: 'deleteProduct',
+          data: formInfo.id,
+        });
+      })
+      .then(() => {
+        dispatch({
+          type: 'filter',
+          filterType: products.currentFilters.category,
+        });
+      });
+  };
+
+  const onSaveBtnClickHandler = (e) => {
+    setIsReadOnly(true);
+    new Promise((resolve) => {
+      resolve(true);
+    })
+      .then(() => {
+        dispatch({
+          type: 'editProduct',
+          data: formInfo,
+        });
+      })
+      .then(() => {
+        dispatch({
+          type: 'filter',
+          filterType: products.currentFilters.category,
+        });
+      });
+  };
+
   return {
     products,
     formInfo,
@@ -90,6 +146,10 @@ const useForm = (isPersian, product) => {
     onProductNameInputChangHandler,
     onCategoryChangeHandler,
     onSubmitHandler,
+    onEditBtnClickHandler,
+    onUndoBtnClickHandler,
+    onDeleteBtnClickHandler,
+    onSaveBtnClickHandler,
   };
 };
 
