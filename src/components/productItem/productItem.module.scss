@@ -1,0 +1,254 @@
+@use '../utility/styles/colors.scss';
+
+.AddProductForm {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+  //   min-height: 130px;
+  &:last-of-type {
+    margin-bottom: 10px;
+  }
+
+  .FormTag {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-radius: 10px;
+    background-color: colors.$deep-purple-100;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Raleway-semiBoldItalic';
+      justify-content: space-between;
+      padding: 1rem 0;
+
+      label {
+        margin-left: 0.2rem;
+        margin-bottom: 0.2rem;
+        // color: colors.$deep-purple-800;
+      }
+      & > input {
+        height: 42px;
+        border-radius: 5px;
+        border: solid colors.$purple-400 2px;
+        padding-left: 5px;
+        font-family: 'Raleway-semiBoldItalic';
+
+        &:focus {
+          outline: solid colors.$purple-400 3px;
+        }
+      }
+
+      .quantityInputTag {
+        width: 80px;
+        cursor: pointer;
+      }
+    }
+    .ProductButtons {
+      width: 15%;
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+
+      margin-top: 22px;
+
+      button {
+        width: 40px;
+        height: 42px;
+        font-size: larger;
+        background-color: transparent;
+        border: solid 3px;
+        transition: all 0.1s ease;
+        border-radius: 5px;
+
+        &:hover {
+          transform: scale(1.02);
+          border-width: 2px;
+          font-size: x-large;
+        }
+
+        &:active {
+          transform: scale(0.98);
+          border-width: 4px;
+          font-size: large;
+        }
+      }
+      .editBtn {
+        background-color: rgba(255, 196, 0, 0.678);
+        color: rgb(116, 77, 5);
+        margin-right: 2px;
+      }
+
+      .deleteBtn {
+        background-color: rgba(245, 80, 51, 0.87);
+        color: rgb(112, 10, 10);
+        margin-left: 2px;
+      }
+      .saveBtn{
+          background-color: rgb(5, 223, 5);
+          color: rgb(3, 80, 3);
+      }
+      .undoBtn{
+          background-color: rgb(165, 165, 165);
+          color: #222;
+      }
+    }
+    .ProductNameDiv {
+      width: 25%;
+    }
+
+    .categoryDiv {
+      width: 210px;
+      position: relative;
+
+      .selectCategory {
+        border: solid colors.$purple-400 2px;
+        border-radius: 5px;
+        * {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    //   flex-direction: column;
+    .FormTag {
+      flex-direction: column;
+      width: 100%;
+      padding: 0 10px;
+      justify-content: space-around;
+      align-items: flex-start;
+
+      .categoryDiv,
+      .submitDiv,
+      .datePickerDiv,
+      .QuantityDiv,
+      .ProductNameDiv {
+        position: static;
+        width: 100%;
+        // margin: 10px auto;
+        padding-bottom: 10px;
+      }
+
+      .calenderInput,
+      .categoryInputContainer {
+        margin: 0 auto;
+      }
+
+      .ProductButtons {
+        margin: 0;
+        button {
+          width: 35%;
+          height: 60px;
+          font-size: xx-large;
+          &:hover {
+            font-size: xxx-large;
+          }
+          &:active {
+            font-size: x-large;
+          }
+        }
+      }
+
+      .datePickerDiv,
+      .QuantityDiv,
+      .ProductNameDiv,
+      .categoryDiv,
+      .ProductButtons {
+        //   flex-direction: row;
+        border-bottom: solid 2px colors.$purple-200;
+        width: 100%;
+
+        .quantityInputTag,
+        .productNameInputTag,
+        .ProductButtons {
+          width: 60%;
+          height: 45px;
+          margin: 0 auto;
+        }
+
+        .calenderInput,
+        .categoryInputContainer {
+          width: 60%;
+          height: 45px;
+        }
+
+        label {
+          width: 100%;
+          padding-left: 0.6rem;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 580px) {
+    .FormTag {
+      .ProductButtons {
+        flex-direction: column;
+        button {
+          width: 96%;
+          margin: 10px 0;
+        }
+      }
+
+      .datePickerDiv,
+      .QuantityDiv,
+      .ProductNameDiv,
+      .categoryDiv,
+      .ProductButtons {
+        .quantityInputTag,
+        .productNameInputTag {
+          width: 98%;
+          height: 45px;
+          margin: 0 auto;
+        }
+        .calenderInput,
+        .categoryInputContainer {
+          width: 98%;
+          height: 45px;
+        }
+      }
+    }
+  }
+}
+
+.AddProductForm.PersianFlex {
+  .FormTag {
+    flex-direction: row-reverse;
+
+    & > div {
+      direction: rtl;
+      font-size: large;
+
+      .ProductButtons {
+        padding: 0;
+      }
+
+      & > input {
+        padding-right: 5px;
+      }
+
+      label {
+        direction: rtl;
+        margin-right: 0.2rem;
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .FormTag {
+      flex-direction: column;
+      & > div {
+        label {
+          padding-right: 0.6rem;
+        }
+      }
+    }
+  }
+}
