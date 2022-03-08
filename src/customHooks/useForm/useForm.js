@@ -118,21 +118,30 @@ const useForm = (isPersian, product) => {
 
   const onSaveBtnClickHandler = (e) => {
     setIsReadOnly(true);
-    new Promise((resolve) => {
-      resolve(true);
-    })
-      .then(() => {
-        dispatch({
-          type: 'editProduct',
-          data: formInfo,
-        });
+    if (
+      formInfo.date &&
+      formInfo.category &&
+      formInfo.productName &&
+      formInfo.quantity
+    ) {
+      new Promise((resolve) => {
+        resolve(true);
       })
-      .then(() => {
-        dispatch({
-          type: 'filter',
-          filterType: products.currentFilters.category,
+        .then(() => {
+          dispatch({
+            type: 'editProduct',
+            data: formInfo,
+          });
+        })
+        .then(() => {
+          dispatch({
+            type: 'filter',
+            filterType: products.currentFilters.category,
+          });
         });
-      });
+    } else {
+      onUndoBtnClickHandler();
+    }
   };
 
   return {
