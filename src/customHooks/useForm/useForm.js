@@ -14,6 +14,7 @@ const useForm = (isPersian, product) => {
   const initAddingForm = {
     date: new Date(),
     quantity: 1,
+    productName: '',
   };
   const { products, dispatch } = useProducts();
   const [formInfo, setFormInfo] = useState(
@@ -75,6 +76,9 @@ const useForm = (isPersian, product) => {
             type: 'filter',
             filterType: products.currentFilters.category,
           });
+        })
+        .finally(() => {
+          setFormInfo({ ...initAddingForm, category: formInfo.category });
         });
     }
   };
