@@ -33,6 +33,7 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
             {currentLanguageTexts.ProductName}{' '}
           </label>
           <input
+            value={formInfo.productName}
             onChange={onProductNameInputChangHandler}
             id="productNameInputTag"
             type="text"
