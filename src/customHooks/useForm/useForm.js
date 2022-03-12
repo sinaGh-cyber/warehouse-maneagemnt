@@ -38,17 +38,13 @@ const useForm = (isPersian, product) => {
     setFormInfo({ ...formInfo, date: date });
   };
 
+  const changHandler = (e) => {
+    setFormInfo({ ...formInfo, [e.target.name]: e.target.value });
+  };
   const onAddCategoryBtnClickHandler = (categoryVal) => {
     setFormInfo({ ...formInfo, category: categoryVal });
   };
 
-  const onQuantityInputChangeHandler = (e) => {
-    setFormInfo({ ...formInfo, quantity: +e.target.value });
-  };
-
-  const onProductNameInputChangHandler = (e) => {
-    setFormInfo({ ...formInfo, productName: e.target.value });
-  };
 
   const onCategoryChangeHandler = (e) => {
     setFormInfo({ ...formInfo, category: e.value });
@@ -155,14 +151,13 @@ const useForm = (isPersian, product) => {
     CustomInput,
     onDatePickerChangeHandler,
     onAddCategoryBtnClickHandler,
-    onQuantityInputChangeHandler,
-    onProductNameInputChangHandler,
     onCategoryChangeHandler,
     onSubmitHandler,
     onEditBtnClickHandler,
     onUndoBtnClickHandler,
     onDeleteBtnClickHandler,
     onSaveBtnClickHandler,
+    changHandler,
   };
 };
 

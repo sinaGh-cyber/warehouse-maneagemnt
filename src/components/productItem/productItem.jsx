@@ -17,13 +17,12 @@ const ProductItem = ({ product, isPersian, currentLanguageTexts }) => {
     CustomInput,
     onDatePickerChangeHandler,
     onAddCategoryBtnClickHandler,
-    onQuantityInputChangeHandler,
-    onProductNameInputChangHandler,
     onCategoryChangeHandler,
     onEditBtnClickHandler,
     onUndoBtnClickHandler,
     onDeleteBtnClickHandler,
     onSaveBtnClickHandler,
+    changHandler,
   } = useForm(isPersian, product);
 
   return (
@@ -38,9 +37,10 @@ const ProductItem = ({ product, isPersian, currentLanguageTexts }) => {
             {currentLanguageTexts.ProductName}{' '}
           </label>
           <input
+            name="productName"
             readOnly={isReadOnly}
             value={formInfo.productName}
-            onChange={onProductNameInputChangHandler}
+            onChange={changHandler}
             id={`productNameInputTag${product.id}`}
             type="text"
             className={styles.productNameInputTag}
@@ -52,13 +52,14 @@ const ProductItem = ({ product, isPersian, currentLanguageTexts }) => {
             {currentLanguageTexts.quantity}
           </label>
           <input
+            name="quantity"
             readOnly={isReadOnly}
             type="number"
             min="1"
             id={`quantityInputTag${product.id}`}
             className={styles.quantityInputTag}
             value={formInfo.quantity}
-            onChange={onQuantityInputChangeHandler}
+            onChange={changHandler}
           />
         </div>
 
@@ -119,7 +120,10 @@ const ProductItem = ({ product, isPersian, currentLanguageTexts }) => {
             </>
           ) : (
             <>
-              <button onClick={onSaveBtnClickHandler} className={styles.saveBtn}>
+              <button
+                onClick={onSaveBtnClickHandler}
+                className={styles.saveBtn}
+              >
                 <ImCheckmark />
               </button>
               <button

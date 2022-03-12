@@ -16,9 +16,9 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
     onDatePickerChangeHandler,
     onAddCategoryBtnClickHandler,
     onQuantityInputChangeHandler,
-    onProductNameInputChangHandler,
     onCategoryChangeHandler,
     onSubmitHandler,
+    changHandler,
   } = useForm(isPersian);
 
   return (
@@ -33,8 +33,9 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
             {currentLanguageTexts.ProductName}{' '}
           </label>
           <input
+            name="productName"
             value={formInfo.productName}
-            onChange={onProductNameInputChangHandler}
+            onChange={changHandler}
             id="productNameInputTag"
             type="text"
             className={styles.productNameInputTag}
@@ -46,12 +47,13 @@ const AddingProductForm = ({ isPersian, currentLanguageTexts }) => {
             {currentLanguageTexts.quantity}
           </label>
           <input
+            name="quantity"
             type="number"
             min="1"
             id="quantityInputTag"
             className={styles.quantityInputTag}
             value={formInfo.quantity}
-            onChange={onQuantityInputChangeHandler}
+            onChange={changHandler}
           />
         </div>
 
