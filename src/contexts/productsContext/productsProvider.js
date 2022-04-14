@@ -3,7 +3,6 @@ import {
   useReducer,
   useContext,
   useEffect,
-  useRef,
 } from 'react';
 import reducer from './reducer';
 
@@ -19,22 +18,18 @@ const ProductsProvider = ({ children }) => {
 
   const [products, dispatch] = useReducer(reducer, initObj);
 
-  const isMounted = useRef(false);
+
+  useEffect(() => {
+    if (products.AllProducts.length && products.categoryOptions.length) {
+      localStorage.setItem('products', JSON.stringify(products));
+    }
+  }, [products]);
 
   useEffect(() => {
     if (localStorage.getItem('products')) {
       dispatch({ type: 'getDataFromLocalStorage' });
     }
   }, []);
-
-  useEffect(() => {
-    if (isMounted.current) {
-      localStorage.setItem('products', JSON.stringify(products));
-    } else {
-      isMounted.current = true;
-    }
-  }, [products]);
-
   return (
     <productsContext.Provider value={{ products, dispatch }}>
       {children}
